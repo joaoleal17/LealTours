@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LealTours.ViewModels"
+             x:Class="LealTours.Views.ManageToursPage"
+             x:Name="ThisPage"
+             Title="Gestão de Tours">
+    <ContentPage.BindingContext>
+        <viewmodels:ManageToursViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="16" RowDefinitions="Auto,*">
+        <!-- Formulário -->
+        <VerticalStackLayout Spacing="8">
+            <Entry Placeholder="Nome" Text="{Binding Name}" />
+            <Editor Placeholder="Descrição" HeightRequest="80" Text="{Binding Description}" />
+            <HorizontalStackLayout Spacing="10">
+                <Entry Placeholder="Preço" Keyboard="Numeric" Text="{Binding Price}" />
+                <Entry Placeholder="Duração (h)" Keyboard="Numeric" Text="{Binding DurationHours}" />
+                <CheckBox IsChecked="{Binding IsActive}" />
+                <Label Text="Ativo" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Guardar" Command="{Binding SaveCommand}" />
+                <Button Text="Limpar" Command="{Binding EditCommand}" CommandParameter="{x:Null}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <!-- Lista -->
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Items}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,6">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Description}" />
+                            <HorizontalStackLayout Spacing="12">
+                                <Label Text="{Binding Price, StringFormat='Preço: {0:C}'}" />
+                                <Label Text="{Binding DurationHours, StringFormat='Duração: {0}h'}" />
+                                <Label Text="{Binding IsActive, StringFormat='Ativo: {0}'}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="8">
+                                <Button Text="Editar" 
+                        Command="{Binding BindingContext.EditCommand, Source={x:Reference ThisPage}}" 
+                        CommandParameter="{Binding .}" />
+                                <Button Text="Eliminar" 
+                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference ThisPage}}" 
+                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

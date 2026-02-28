@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:LealTours.Views"
+    x:Class="LealTours.AppShell">
+
+    <TabBar>
+        <ShellContent Title="Tours" ContentTemplate="{DataTemplate views:ToursPage}" />
+        <ShellContent Title="Reservas" ContentTemplate="{DataTemplate views:BookingPage}" />
+        <ShellContent Title="Gestão Tours" ContentTemplate="{DataTemplate views:ManageToursPage}" />
+        <ShellContent Title="Gestão Reservas" ContentTemplate="{DataTemplate views:ManageBookingPage}" />
+        <ShellContent Title="Definições" ContentTemplate="{DataTemplate views:SettingsPage}" />
+        <ShellContent Title="Sobre" ContentTemplate="{DataTemplate views:AboutPage}" />
+    </TabBar>
+
+</Shell>
