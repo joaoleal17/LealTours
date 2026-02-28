@@ -1,0 +1,25 @@
+﻿From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: João Leal <you@example.com>
+Date: Sat, 28 Feb 2026 10:45:00 +0000
+Subject: [PATCH] fix(views): rename ManageBookingsPage* -> ManageBookingPage*
+ to align filename with class name
+
+---
+ Views/ManageBookingsPage.xaml                    | 0
+ Views/ManageBookingsPage.xaml.cs                 | 0
+ Views/ManageBookingPage.xaml                     | 0
+ Views/ManageBookingPage.xaml.cs                  | 0
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ rename Views/{ManageBookingsPage.xaml => ManageBookingPage.xaml} (100%)
+ rename Views/{ManageBookingsPage.xaml.cs => ManageBookingPage.xaml.cs} (100%)
+
+diff --git a/Views/ManageBookingsPage.xaml b/Views/ManageBookingPage.xaml
+similarity index 100%
+rename from Views/ManageBookingsPage.xaml
+rename to Views/ManageBookingPage.xaml
+diff --git a/Views/ManageBookingsPage.xaml.cs b/Views/ManageBookingPage.xaml.cs
+similarity index 100%
+rename from Views/ManageBookingsPage.xaml.cs
+rename to Views/ManageBookingPage.xaml.cs
+-- 
+2.46.0

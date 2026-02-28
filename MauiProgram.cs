@@ -1,25 +1,31 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
 
-namespace LealTours
+namespace LealTours;
+
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+        var builder = MauiApp.CreateBuilder();
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
-            return builder.Build();
-        }
+        // ⬇️ Regista o Shell (padrão recomendado)
+        builder.Services.AddSingleton<AppShell>();
+
+        // ⬇️ (Exemplos) registos de páginas/viewmodels se usas DI
+        // builder.Services.AddTransient<MainPage>();
+        // builder.Services.AddTransient<BookingPage>();
+        // builder.Services.AddTransient<ManageBookingPage>();
+
+        return builder.Build();
     }
 }

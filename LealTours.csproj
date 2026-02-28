@@ -50,6 +50,9 @@
 	  <Compile Update="Views\BookingPage.xaml.cs">
 	    <DependentUpon>BookingPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\ManageBookingPage.xaml.cs">
+	    <DependentUpon>ManageBookingPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
